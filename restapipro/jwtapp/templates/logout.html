@@ -1,0 +1,21 @@
+
+
+<div class="col-md-11 text-center">
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+</div>
+<nav><!-- navigation link tag -->
+    <div class="col-sm-6">
+        {% if request.user.is_authenticated %}
+             <a href="{% url 'authapp:logout' %}">Logout</a> <!-- anchor+href( links )-->
+               {% else %}
+                <a href="{% url 'authapp:login' %}">Login Form</a>
+                  {% endif %}
+    </div>
+    <div class="col-sm-6">
+        {% if request.user.is_staff %}
+             <a href="/admin/">Admin</a>
+                {% endif %}
+    </div>
+</nav>

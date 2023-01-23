@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <title>Delete Record</title>
+</head>
+<body>
+<br>
+
+<div class=" col-sm-8 card card-body container">
+    <label class="col-sm-2 ">Are You sure you want To Delete {{ query.name }} Record: </label>
+    <div class="col-sm-4">
+      <center><a href="" class=" btn btn-primary">YES I'm sure..</a></center><br>
+    </div>
+    <div class="col-sm-2">
+      <center><a href="/api/getall" class=" col-md-8 btn btn-primary">NO Take me back..</a></center>
+    </div>
+</div>
+
+</body>
+</html>

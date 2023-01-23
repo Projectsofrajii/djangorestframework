@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <title>retrieve data</title>
+</head>
+<body>
+<nav class="navbar navbar-default">
+            <div class="col-md-12 container card card-header">
+                <a class="navbar-brand" href="#">
+                    EMPLOYEE INFORMATION
+                </a>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <a class="navbar-brand" href="create">Add New Record</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="">Employees</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logout">logins</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+            </div>
+</nav>
+    <!--<div class="col-xs-1 text-left">
+    <center><a href="/create" class="btn btn-primary">Add New Record</a></center>
+</div>-->
+<table class="table table-striped table-border  ed table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>Employee UserID</th>
+        <th>Employee Name</th>
+        <th>Employee Contact</th>
+         <th>Employee EmailID</th>
+        <th>Employee Aadhar No</th>
+        <th>Employee Address</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for data in dataset %}
+    <tr>
+        <td>{{ data.user_id }}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.contact }}</td>
+        <td>{{ data.email }}</td>
+        <td>{{ data.aadharno }}</td>
+        <td>{{ data.address }}</td>
+
+        <td>
+            <a href="update/{{ data.id }}"><span class="glyphicon glyphicon-pencil" >Update /</span></a>
+            <a href="getid/{{ data.id }}">Get Id /</a>
+            {% block content %} <a href="/delete/{{ data.id }}">Delete</a> {% endblock %}
+        </td>
+
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+
+</body>
+</html>

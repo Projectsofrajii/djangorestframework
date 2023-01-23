@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="col-md-6 container card card-header">
+                <a class="navbar-brand" href="#">
+                    LOGIN FORM
+                </a>
+            <br>
+
+<form method = 'post'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type = "submit" value = "Submit">
+</form>
+
+<h3>Dont have an account??</h3><br>
+                <a href = "{% url 'signup' %}">SignUp Here</a></div></div>
+</nav>
+</body>
+</html>

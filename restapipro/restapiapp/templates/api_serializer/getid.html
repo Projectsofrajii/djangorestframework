@@ -1,0 +1,14 @@
+{% extends 'home.html' %}
+{% block content %}
+<div class="col-md-6 container card card-header">
+
+{% load rest_framework %}
+
+<h3>Profile - {{ query.name }}</h3>
+
+<form method="GET" novalidate>
+    {% csrf_token %}
+    {% render_form serializer  %}
+</form>
+</div>
+{% endblock %}

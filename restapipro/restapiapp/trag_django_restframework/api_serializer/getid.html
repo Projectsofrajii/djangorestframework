@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <title>retrieve byid</title>
+</head>
+<body>
+<br>    <div class="col-md-6 container card card-header">
+
+{% load rest_framework %}
+
+<h3>Profile - {{ query.name }}</h3>
+
+<form action="{% url 'get' pk=query.pk %}" method="GET" novalidate>
+    {% csrf_token %}
+    {% render_form serializer  %}
+</form>
+</div>
+</body>
+</html>

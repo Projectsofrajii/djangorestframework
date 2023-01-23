@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="project">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <meta name="author" content="Rajalakshmi">
+
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  {% if messages %}
+  {% for message in messages %}
+
+  <script>
+    alert("{{ message }}");
+  </script>
+
+  {% endfor %}
+  {% endif %}
+
+</head>
+
+<body class="container-fluid">
+<div>
+  <header class="row">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" class="styleheader" href="{% url 'restapiapp:home' %}">Employee Information</a>
+        </div>
+        <div class="collapse navbar-collapse" id="mainNavBar">
+          <ul class="nav navbar-nav navbar-right">
+
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'companyapp:secretall' %}"> Company </a></li>
+            <li><a href="{% url 'restapiapp:getall' %}"> Employee </a></li>
+            <li><a  href = "{% url 'authapp:signout' %}">Logout here</a></li>
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+            {% else %}
+            <li><a href="{% url 'authapp:signup' %}"><span class="glyphicon glyphicon-user"></span> &nbsp; Sign up</a></li>
+            <li><a href="{% url 'authapp:login' %}"><span class="glyphicon glyphicon-log-in"></span> &nbsp; Log in</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header><br>
+  <br></div>
+  <div>
+    {% block start %}
+    {% if user.is_authenticated %}
+    <center><h3>welcome {{user.username}}!</h3></center>
+    {% else %}
+    <center><h3>log in, plz . . .</h3></center>
+    {% endif %}
+    {% endblock %}
+  </div>
+{% block content %} {% endblock %}
+</body>
+
+</html>
